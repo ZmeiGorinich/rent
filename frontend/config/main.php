@@ -15,6 +15,15 @@ return [
         'user' => [
             'class' => 'frontend\modules\user\Module',
         ],
+        'shop' => [
+            'class' => 'frontend\modules\shop\Module',
+        ],
+        'rent' => [
+            'class' => 'frontend\modules\rent\Module',
+        ],
+        'service' => [
+            'class' => 'frontend\modules\service\Module',
+        ],
     ],
     'components' => [
         'request' => [
