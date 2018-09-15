@@ -37,7 +37,11 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/site/index']],
-        ['label' => 'Аренда', 'url' => ['/rent/default/index']],
+        ['label' => 'Аренда', 'items' => [
+            ['label' => 'Строительная', 'url' => ['/rent/construction/index']],
+            ['label' => 'Комунальная', 'url' => ['/rent/municipal/index']],
+        ]],
+
         ['label' => 'Услуги', 'url' => ['/service/default/index']],
         ['label' => 'Продажа', 'url' => ['/shop/default/index']],
     ];
