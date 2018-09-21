@@ -5,14 +5,14 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `category`.
  */
-class m180915_091947_create_category_table extends Migration
+class m180915_091947_create_category_rent_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('category', [
+        $this->createTable('category_rent', [
             'id' => $this->primaryKey(),
             'type' => $this->string()->notNull(),
             'name' => $this->string()->notNull(),
@@ -28,6 +28,6 @@ class m180915_091947_create_category_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('category');
+        $this->dropTable('category_rent');
     }
 }
