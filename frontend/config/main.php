@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language'=>'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -56,6 +57,9 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'storage' => [
+            'class' => 'frontend\components\Storage',
         ],
 
     ],
