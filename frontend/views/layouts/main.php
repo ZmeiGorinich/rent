@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
@@ -26,6 +27,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -35,15 +37,21 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
     $menuItems = [
-        ['label' => 'Главная', 'url' => ['/site/index']],
-        ['label' => 'Аренда', 'items' => [
-            ['label' => 'Строительная', 'url' => ['/rent/construction/view']],
-            ['label' => 'Комунальная', 'url' => ['/rent/municipal/index']],
+        ['label' => Yii::t('menu', 'Home'), 'url' => ['/site/index']],
+        ['label' => Yii::t('menu', 'Rent'), 'items' => [
+            ['label' => Yii::t('menu', 'Construction'), 'url' => ['/rent/construction/view']],
+            ['label' => Yii::t('menu', 'Municipal'), 'url' => ['/rent/municipal/index']],
         ]],
 
-        ['label' => 'Услуги', 'url' => ['/service/default/index']],
-        ['label' => 'Продажа', 'url' => ['/shop/default/index']],
+        //['label' => 'Язык', 'items' => [
+        //    ['label' => 'Русский', 'url' => ['/site/language/ru']],
+        //    ['label' => 'English', 'url' => ['/site/language/en']],
+        //]],
+
+        ['label' => Yii::t('menu', 'Service'), 'url' => ['/service/default/index']],
+        ['label' => Yii::t('menu', 'Shop'), 'url' => ['/shop/default/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/user/default/signup']];
@@ -65,6 +73,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
+
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -72,8 +81,16 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</div>
 
+</div>
+<div class="col-md-4 col-sm-4">
+    <li>
+        <?= Html::beginForm(['/site/language']) ?>
+        <?= Html::dropDownList('language', Yii::$app->language, ['en-US' => 'English', 'ru-RU' => 'Русский']) ?>
+        <?= Html::submitButton('Change') ?>
+        <?= Html::endForm() ?>
+    </li>
+</div>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
