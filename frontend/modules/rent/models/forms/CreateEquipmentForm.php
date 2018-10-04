@@ -2,9 +2,10 @@
 
 namespace frontend\modules\rent\models\forms;
 
+use common\models\CharacteristicsTech;
 use yii\base\Model;
 use Yii;
-use frontend\models\EquipmentRent;
+use common\models\EquipmentRent;
 use frontend\models\User;
 
 class CreateEquipmentForm extends Model
@@ -83,7 +84,7 @@ class CreateEquipmentForm extends Model
         return [
 
             [['picture'], 'file',
-                'skipOnEmpty' => true,
+                'skipOnEmpty' => false,
                 'extensions' => ['jpg', 'png'],
                 'checkExtensionByMimeType' => true,
                 'maxSize' => $this->getMaxFileSize()],
@@ -364,17 +365,6 @@ class CreateEquipmentForm extends Model
         if ($this->validate()) {
             $equipmentRent = new EquipmentRent();
 
-            $equipmentRent->feature1=$model2->feature1;
-            $equipmentRent->feature2=$model2->feature2;
-            $equipmentRent->feature3=$model2->feature3;
-            $equipmentRent->feature4=$model2->feature4;
-            $equipmentRent->feature5=$model2->feature5;
-            $equipmentRent->feature6=$model2->feature6;
-            $equipmentRent->feature7=$model2->feature7;
-            $equipmentRent->feature8=$model2->feature8;
-            $equipmentRent->feature9=$model2->feature9;
-            $equipmentRent->feature10=$model2->feature10;
-
             $equipmentRent->name = $this->name;
             $equipmentRent->author_id = $this->user->getId();
             $equipmentRent->type = $this->type;
@@ -383,21 +373,30 @@ class CreateEquipmentForm extends Model
             $equipmentRent->price = $this->price;
             $equipmentRent->min_order = $this->min_order;
             $equipmentRent->description = $this->description;
-            $equipmentRent->region = $this->region;
-            $equipmentRent->district = $this->district;
-
+            $equipmentRent->district_id = $this->district;
             $equipmentRent->height = $this->height;
             $equipmentRent->width = $this->width;
             $equipmentRent->length = $this->length;
             $equipmentRent->weight = $this->weight;
-
             $equipmentRent->created_at = time();
             $equipmentRent->updated_at = time();
 
-            return $equipmentRent->save(false);
+            $equipmentRent->save();
+
+            $insert_id = Yii::$app->db->getLastInsertID();
+
+            foreach ($model2 as $item){
+                $characteristics = new CharacteristicsTech();
+
+                $characteristics->equipment_id=$insert_id;
+
+                $characteristics->feature=$item;
+
+                $characteristics->save();
+            }
+            return $characteristics->save(false);
 
         }
-
     }
 
 
