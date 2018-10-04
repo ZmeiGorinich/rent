@@ -43,6 +43,7 @@ AppAsset::register($this);
         ['label' => Yii::t('menu', 'Rent'), 'items' => [
             ['label' => Yii::t('menu', 'Construction'), 'url' => ['/rent/construction/view']],
             ['label' => Yii::t('menu', 'Municipal'), 'url' => ['/rent/municipal/index']],
+
         ]],
 
         //['label' => 'Язык', 'items' => [

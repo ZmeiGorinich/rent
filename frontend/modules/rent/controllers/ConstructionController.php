@@ -10,10 +10,10 @@ use Yii;
 use yii\web\UploadedFile;
 
 
+
+
 class ConstructionController extends Controller
 {
-
-
     public function actionView(){
 
         $item =  EquipmentRent::find()->all();

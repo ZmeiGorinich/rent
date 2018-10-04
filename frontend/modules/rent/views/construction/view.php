@@ -1,12 +1,13 @@
 <?php
 use yii\helpers\Html;
-use yii\web\JqueryAsset;
+
 ?>
-<?php foreach ($item as $value): ?>
+<?php foreach ($item as $items): ?>
 <div>
-    <p><?php echo $value->name; ?></p>
+    <p><?= Html::encode($items->name)?></p>
+
     <div class="col-md-12">
-        <img src="<?php echo Yii::$app->storage->getFile($value->filename); ?>"
+        <img src="<?php echo Yii::$app->storage->getFile($items->filename); ?>"
     </div>
 
 </div>
