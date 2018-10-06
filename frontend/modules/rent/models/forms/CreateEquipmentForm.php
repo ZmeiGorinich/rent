@@ -387,24 +387,26 @@ class CreateEquipmentForm extends Model
             $equipmentRent->created_at = time();
             $equipmentRent->updated_at = time();
 
-            return $equipmentRent->save(false);
+            $equipmentRent->save(false);
 
         }
 
-            $insert_id = Yii::$app->db->getLastInsertID();
+        $insert_id = Yii::$app->db->getLastInsertID();
 
-            foreach ($model2 as $item){
-                $characteristics = new CharacteristicsTech();
+        foreach ($model2 as $key => $item) {
+            $characteristics = new CharacteristicsTech();
 
-                $characteristics->equipment_id=$insert_id;
+            $characteristics->equipment_id = $insert_id;
 
-                $characteristics->feature=$item;
+            $characteristics->feature = $item;
 
-                $characteristics->save();
-            }
-            return $characteristics->save(false);
+            $characteristics->feature_id = $key;
 
+            $characteristics->save();
         }
+        return $characteristics->save(false);
+
+    }
 
 
     private function getMaxFileSize()

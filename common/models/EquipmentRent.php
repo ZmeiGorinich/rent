@@ -22,15 +22,15 @@ use Yii;
  * @property int $length
  * @property int $width
  * @property int $weight
- * @property int $id_characteristics
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ * @property int $id_characteristics
  *
+ * @property CharacteristicsTech[] $characteristicsTeches
  * @property User $author
  * @property District $district
  * @property CategoryEquipment $category0
- * @property CharacteristicsTech $characteristics
  * @property Rent[] $rents
  */
 class EquipmentRent extends \yii\db\ActiveRecord
@@ -43,20 +43,19 @@ class EquipmentRent extends \yii\db\ActiveRecord
         return 'equipment_rent';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+//    /**
+//     * {@inheritdoc}
+//     */
 //    public function rules()
 //    {
 //        return [
-//            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'id_characteristics', 'status', 'created_at', 'updated_at'], 'integer'],
+//            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at', 'id_characteristics'], 'integer'],
 //            [['description'], 'string'],
 //            [['created_at', 'updated_at'], 'required'],
 //            [['name', 'type', 'filename', 'min_order'], 'string', 'max' => 255],
 //            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
 //            [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::className(), 'targetAttribute' => ['district_id' => 'id']],
 //            [['category'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryEquipment::className(), 'targetAttribute' => ['category' => 'id']],
-//            [['id_characteristics'], 'exist', 'skipOnError' => true, 'targetClass' => CharacteristicsTech::className(), 'targetAttribute' => ['id_characteristics' => 'id']],
 //        ];
 //    }
 
@@ -81,11 +80,19 @@ class EquipmentRent extends \yii\db\ActiveRecord
             'length' => 'Length',
             'width' => 'Width',
             'weight' => 'Weight',
-            'id_characteristics' => 'Id Characteristics',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'id_characteristics' => 'Id Characteristics',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCharacteristicsTeches()
+    {
+        return $this->hasMany(CharacteristicsTech::className(), ['equipment_id' => 'id']);
     }
 
     /**
@@ -110,14 +117,6 @@ class EquipmentRent extends \yii\db\ActiveRecord
     public function getCategory0()
     {
         return $this->hasOne(CategoryEquipment::className(), ['id' => 'category']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCharacteristics()
-    {
-        return $this->hasOne(CharacteristicsTech::className(), ['id' => 'id_characteristics']);
     }
 
     /**

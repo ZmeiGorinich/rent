@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "characteristics_tech".
  *
  * @property int $id
+ * @property string $feature_id
  * @property string $feature
  * @property int $equipment_id
  *
@@ -30,7 +31,7 @@ class CharacteristicsTech extends \yii\db\ActiveRecord
     {
         return [
             [['equipment_id'], 'integer'],
-            [['feature'], 'string', 'max' => 255],
+            [['feature_id', 'feature'], 'string', 'max' => 45],
             [['equipment_id'], 'exist', 'skipOnError' => true, 'targetClass' => EquipmentRent::className(), 'targetAttribute' => ['equipment_id' => 'id']],
         ];
     }
@@ -42,6 +43,7 @@ class CharacteristicsTech extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'feature_id' => 'Feature ID',
             'feature' => 'Feature',
             'equipment_id' => 'Equipment ID',
         ];

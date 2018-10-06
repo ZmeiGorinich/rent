@@ -61,6 +61,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'rent/construction/equipment/<id:\d+>' => 'rent/construction/equipment',
             ],
         ],
         'storage' => [

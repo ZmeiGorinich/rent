@@ -113,132 +113,192 @@ $this->registerJs($script, yii\web\View::POS_READY);
 
     <div id="aerial_platform" class="row" style="display: none;" data-id-block="1">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_aerial_platform')->label('Модель автовышки'); ?>
-            <?php echo $form->field($model, 'lifting_height')->label('Высота подъема'); ?>
-            <?php echo $form->field($model, 'lifting_capacity_cradle')->label('Грузоподъемность люльки'); ?>
-            <?php echo $form->field($model, 'number_cradle')->label('Количество мест в люльке'); ?>
+            <?php echo $form->field($model, 'model_aerial_platform')
+                ->label(Yii::t('rent_construction_view', 'model_aerial_platform')); ?>
+            <?php echo $form->field($model, 'lifting_height')
+                ->label(Yii::t('rent_construction_view', 'lifting_height')); ?>
+            <?php echo $form->field($model, 'lifting_capacity_cradle')
+                ->label(Yii::t('rent_construction_view', 'lifting_capacity_cradle')); ?>
+            <?php echo $form->field($model, 'number_cradle')
+                ->label(Yii::t('rent_construction_view', 'number_cradle')); ?>
         </div>
     </div>
 
     <div id="truck_cranes" class="row" style="display: none;" data-id-block="2">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_truck_cranes')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'lifting_capacity')->label('Грузоподъемность')->textInput(); ?>
-            <?php echo $form->field($model, 'length_boom')->label('Длина стрелы')->textInput(); ?>
-            <?php echo $form->field($model, 'boom_extension_length')->label('Длина удлинителя стрелы')->textInput(); ?>
-            <?php echo $form->field($model, 'maximum_reach_boom')->label('Максимальный вылет стрелы')->textInput(); ?>
+            <?php echo $form->field($model, 'model_truck_cranes')
+                ->label(Yii::t('rent_construction_view', 'model_truck_cranes')); ?>
+            <?php echo $form->field($model, 'lifting_capacity')
+                ->label(Yii::t('rent_construction_view', 'lifting_capacity')); ?>
+            <?php echo $form->field($model, 'length_boom')
+                ->label(Yii::t('rent_construction_view', 'length_boom')); ?>
+            <?php echo $form->field($model, 'boom_extension_length')
+                ->label(Yii::t('rent_construction_view', 'boom_extension_length')); ?>
+            <?php echo $form->field($model, 'maximum_reach_boom')
+                ->label(Yii::t('rent_construction_view', 'maximum_reach_boom')); ?>
         </div>
     </div>
 
     <div id="cranes_manipulators" class="row" style="display: none;" data-id-block="3">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_cranes_manipulators')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'car_load_capacity')->label('Грузоподъемность авто')->textInput(); ?>
-            <?php echo $form->field($model, 'boom_outreach')->label('Вылет стрелы')->textInput(); ?>
-            <?php echo $form->field($model, 'crane_lifting_capacity')->label('Грузоподъемность крана')->textInput(); ?>
-            <?php echo $form->field($model, 'dimensions_platform')->label('Габариты платформы')->textInput(); ?>
+            <?php echo $form->field($model, 'model_cranes_manipulators')
+                ->label(Yii::t('rent_construction_view', 'model_cranes_manipulators')); ?>
+            <?php echo $form->field($model, 'car_load_capacity')
+                ->label(Yii::t('rent_construction_view', 'car_load_capacity')); ?>
+            <?php echo $form->field($model, 'boom_outreach')
+                ->label(Yii::t('rent_construction_view', 'boom_outreach')); ?>
+            <?php echo $form->field($model, 'crane_lifting_capacity')
+                ->label(Yii::t('rent_construction_view', 'crane_lifting_capacity')); ?>
+            <?php echo $form->field($model, 'dimensions_platform')
+                ->label(Yii::t('rent_construction_view', 'dimensions_platform')); ?>
         </div>
     </div>
 
     <div id="excavators" class="row" style="display: none;"  data-id-block="4">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_excavators')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'bucket_capacity')->label('Емкость ковша, м3')->textInput(); ?>
-            <?php echo $form->field($model, 'radius_digging')->label('Радиус копания, м')->textInput(); ?>
-            <?php echo $form->field($model, 'kinematic_depth_digging')->label('Кинематическая глубина копания, м')->textInput(); ?>
-            <?php echo $form->field($model, 'discharge_height')->label('Высота выгрузки, м')->textInput(); ?>
+            <?php echo $form->field($model, 'model_excavators')
+                ->label(Yii::t('rent_construction_view', 'model_excavators')); ?>
+            <?php echo $form->field($model, 'bucket_capacity')
+                ->label(Yii::t('rent_construction_view', 'bucket_capacity')); ?>
+            <?php echo $form->field($model, 'radius_digging')
+                ->label(Yii::t('rent_construction_view', 'radius_digging')); ?>
+            <?php echo $form->field($model, 'kinematic_depth_digging')
+                ->label(Yii::t('rent_construction_view', 'kinematic_depth_digging')); ?>
+            <?php echo $form->field($model, 'discharge_height')
+                ->label(Yii::t('rent_construction_view', 'discharge_height')); ?>
         </div>
     </div>
 
     <div id="backhoe_loaders" class="row" style="display: none;"  data-id-block="5">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_backhoe_loaders')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'bucket_capacity_excavator')->label('Объем ковша, экскаватор')->textInput(); ?>
-            <?php echo $form->field($model, 'digging_depth_excavator')->label('Глубина копания, экскаватор')->textInput(); ?>
-            <?php echo $form->field($model, 'bucket_capacity_loader')->label('Объем ковша, погрузчик')->textInput(); ?>
-            <?php echo $form->field($model, 'unloading_height_loader')->label('Высота выгрузки, погрузчик')->textInput(); ?>
+            <?php echo $form->field($model, 'model_backhoe_loaders')
+                ->label(Yii::t('rent_construction_view', 'model_backhoe_loaders')); ?>
+            <?php echo $form->field($model, 'bucket_capacity_excavator')
+                ->label(Yii::t('rent_construction_view', 'bucket_capacity_excavator')); ?>
+            <?php echo $form->field($model, 'digging_depth_excavator')
+                ->label(Yii::t('rent_construction_view', 'digging_depth_excavator')); ?>
+            <?php echo $form->field($model, 'bucket_capacity_loader')
+                ->label(Yii::t('rent_construction_view', 'bucket_capacity_loader')); ?>
+            <?php echo $form->field($model, 'unloading_height_loader')
+                ->label(Yii::t('rent_construction_view', 'unloading_height_loader')); ?>
         </div>
     </div>
 
     <div id="bulldozers" class="row" style="display: none;"  data-id-block="6">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_bulldozers')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'power_kwt')->label('Мощность квт (л.с.)')->textInput(); ?>
-            <?php echo $form->field($model, 'blade_width')->label('Ширина отвала, м')->textInput(); ?>
-            <?php echo $form->field($model, 'blade_height')->label('Высота отвала, м')->textInput(); ?>
-            <?php echo $form->field($model, 'max_pulling_force')->label('Max тяговое усилие КН (ТС)')->textInput(); ?>
+            <?php echo $form->field($model, 'model_bulldozers')
+                ->label(Yii::t('rent_construction_view', 'model_bulldozers')); ?>
+            <?php echo $form->field($model, 'power_kwt')
+                ->label(Yii::t('rent_construction_view', 'power_kwt')); ?>
+            <?php echo $form->field($model, 'blade_width')
+                ->label(Yii::t('rent_construction_view', 'blade_width')); ?>
+            <?php echo $form->field($model, 'blade_height')
+                ->label(Yii::t('rent_construction_view', 'blade_height')); ?>
+            <?php echo $form->field($model, 'max_pulling_force')
+                ->label(Yii::t('rent_construction_view', 'max_pulling_force')); ?>
         </div>
     </div>
 
     <div id="hammers" class="row" style="display: none;"  data-id-block="7">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_hammers')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'hydraulic_breaker_brand')->label('Марка гидромолота')->textInput(); ?>
-            <?php echo $form->field($model, 'impact_energy')->label('Энергия удара')->textInput(); ?>
-            <?php echo $form->field($model, 'mass_hydraulic_breaker')->label('Масса гидромолота')->textInput(); ?>
-            <?php echo $form->field($model, 'hammer_beat_frequency')->label('Частота ударов гидромолота')->textInput(); ?>
+            <?php echo $form->field($model, 'model_hammers')
+                ->label(Yii::t('rent_construction_view', 'model_hammers')); ?>
+            <?php echo $form->field($model, 'hydraulic_breaker_brand')
+                ->label(Yii::t('rent_construction_view', 'hydraulic_breaker_brand')); ?>
+            <?php echo $form->field($model, 'impact_energy')
+                ->label(Yii::t('rent_construction_view', 'impact_energy')); ?>
+            <?php echo $form->field($model, 'mass_hydraulic_breaker')
+                ->label(Yii::t('rent_construction_view', 'mass_hydraulic_breaker')); ?>
+            <?php echo $form->field($model, 'hammer_beat_frequency')
+                ->label(Yii::t('rent_construction_view', 'hammer_beat_frequency')); ?>
         </div>
     </div>
 
     <div id="concrete_pump" class="row" style="display: none;"  data-id-block="8">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_concrete_pump')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'max_theoretical_produce')->label('Макс. теоретич. произв-ть, м3/час')->textInput(); ?>
-            <?php echo $form->field($model, 'max_pressure_concrete')->label('Макс. давление на бетон, бар.')->textInput(); ?>
-            <?php echo $form->field($model, 'max_delivery_height')->label('Макс. высота подачи, м.')->textInput(); ?>
-            <?php echo $form->field($model, 'max_feed_range')->label('Макс. дальность подачи, м. ')->textInput(); ?>
-            <?php echo $form->field($model, 'pump_volume_concrete_mixer')->label('Объем бетоносмесителя, м3')->textInput(); ?>
-            <?php echo $form->field($model, 'width_car_expanded_form')->label('Ширина автомобиля в разложенном виде, м')->textInput(); ?>
-            <?php echo $form->field($model, 'height_working_condition')->label('Высота автомобиля в рабочем состоянии, м')->textInput(); ?>
+            <?php echo $form->field($model, 'model_concrete_pump')
+                ->label(Yii::t('rent_construction_view', 'model_concrete_pump')); ?>
+            <?php echo $form->field($model, 'max_theoretical_produce')
+                ->label(Yii::t('rent_construction_view', 'max_theoretical_produce')); ?>
+            <?php echo $form->field($model, 'max_pressure_concrete')
+                ->label(Yii::t('rent_construction_view', 'max_pressure_concrete')); ?>
+            <?php echo $form->field($model, 'max_delivery_height')
+                ->label(Yii::t('rent_construction_view', 'max_delivery_height')); ?>
+            <?php echo $form->field($model, 'max_feed_range')
+                ->label(Yii::t('rent_construction_view', 'max_feed_range')); ?>
+            <?php echo $form->field($model, 'pump_volume_concrete_mixer')
+                ->label(Yii::t('rent_construction_view', 'pump_volume_concrete_mixer')); ?>
+            <?php echo $form->field($model, 'width_car_expanded_form')
+                ->label(Yii::t('rent_construction_view', 'width_car_expanded_form')); ?>
+            <?php echo $form->field($model, 'height_working_condition')
+                ->label(Yii::t('rent_construction_view', 'height_working_condition')); ?>
         </div>
     </div>
 
     <div id="front_loader" class="row" style="display: none;"  data-id-block="9">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_front_loader')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'bucket_cutting_edge_width')->label('Ширина режущей кромки ковша')->textInput(); ?>
-            <?php echo $form->field($model, 'front_loader_bucket_capacity')->label('Емкость ковша')->textInput(); ?>
-            <?php echo $form->field($model, 'tipping_load')->label('Грузоподъемность/опрокидывающая нагрузка')->textInput(); ?>
-            <?php echo $form->field($model, 'operating_weight')->label('Эксплуатационная масса')->textInput(); ?>
-            <?php echo $form->field($model, 'maximum_discharge_height')->label('Максимальная высота выгрузки')->textInput(); ?>
+            <?php echo $form->field($model, 'model_front_loader')
+                ->label(Yii::t('rent_construction_view', 'model_front_loader')); ?>
+            <?php echo $form->field($model, 'bucket_cutting_edge_width')
+                ->label(Yii::t('rent_construction_view', 'bucket_cutting_edge_width')); ?>
+            <?php echo $form->field($model, 'front_loader_bucket_capacity'
+            )->label(Yii::t('rent_construction_view', 'front_loader_bucket_capacity')); ?>
+            <?php echo $form->field($model, 'tipping_load')
+                ->label(Yii::t('rent_construction_view', 'tipping_load')); ?>
+            <?php echo $form->field($model, 'operating_weight')
+                ->label(Yii::t('rent_construction_view', 'operating_weight')); ?>
+            <?php echo $form->field($model, 'maximum_discharge_height')
+                ->label(Yii::t('rent_construction_view', 'maximum_discharge_height')); ?>
         </div>
     </div>
 
     <div id="truck_mixers" class="row" style="display: none;"  data-id-block="10">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_truck_mixers')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'volume_concrete_mixer')->label('Объем бетоносмесителя, м3')->textInput(); ?>
+            <?php echo $form->field($model, 'model_truck_mixers')
+                ->label(Yii::t('rent_construction_view', 'model_truck_mixers')); ?>
+            <?php echo $form->field($model, 'volume_concrete_mixer')
+                ->label(Yii::t('rent_construction_view', 'volume_concrete_mixer')); ?>
         </div>
     </div>
 
     <div id="compressors" class="row" style="display: none;"  data-id-block="11">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_compressors')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'power_compressors')->label('Мощность квт')->textInput(); ?>
+            <?php echo $form->field($model, 'model_compressors')
+                ->label(Yii::t('rent_construction_view', 'model_compressors')); ?>
+            <?php echo $form->field($model, 'power_compressors')
+                ->label(Yii::t('rent_construction_view', 'power_compressors')); ?>
 
         </div>
     </div>
 
     <div id="generators" class="row" style="display: none;"  data-id-block="12">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_generators')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'power_generators')->label('Мощность квт (л.с.)')->textInput(); ?>
+            <?php echo $form->field($model, 'model_generators')
+                ->label(Yii::t('rent_construction_view', 'model_generators')); ?>
+            <?php echo $form->field($model, 'power_generators')
+                ->label(Yii::t('rent_construction_view', 'power_generators')); ?>
         </div>
     </div>
 
     <div id="dumpers" class="row" style="display: none;"  data-id-block="13">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_dumpers')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'dumpers_lifting_capacity')->label('Грузоподъемность')->textInput(); ?>
-            <?php echo $form->field($model, 'board_height')->label('Высота борта')->textInput(); ?>
-            <?php echo $form->field($model, 'bead_length')->label('Длина борта')->textInput(); ?>
+            <?php echo $form->field($model, 'model_dumpers')
+                ->label(Yii::t('rent_construction_view', 'model_dumpers')); ?>
+            <?php echo $form->field($model, 'dumpers_lifting_capacity')
+                ->label(Yii::t('rent_construction_view', 'dumpers_lifting_capacity')); ?>
+            <?php echo $form->field($model, 'board_height')
+                ->label(Yii::t('rent_construction_view', 'board_height')); ?>
+            <?php echo $form->field($model, 'bead_length')
+                ->label(Yii::t('rent_construction_view', 'bead_length')); ?>
         </div>
     </div>
 
     <div id="road_rollers" class="row" style="display: none;"  data-id-block="14">
         <div class="col-lg-5">
-            <?php echo $form->field($model, 'model_road_rollers')->label('Модель')->textInput(); ?>
-            <?php echo $form->field($model, 'working_width')->label('Ширина рабочая')->textInput(); ?>
+            <?php echo $form->field($model, 'model_road_rollers')
+                ->label(Yii::t('rent_construction_view', 'model_road_rollers')); ?>
+            <?php echo $form->field($model, 'working_width')
+                ->label(Yii::t('rent_construction_view', 'working_width')) ?>
         </div>
     </div>
 </div>
