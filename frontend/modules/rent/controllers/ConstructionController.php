@@ -4,11 +4,13 @@ namespace frontend\modules\rent\controllers;
 
 use common\models\CharacteristicsTech;
 use common\models\EquipmentRent;
+use common\models\RentDate;
+use frontend\modules\rent\models\forms\AddRent;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use Yii;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
-
 
 
 class ConstructionController extends Controller
@@ -18,8 +20,6 @@ class ConstructionController extends Controller
 
         $item = EquipmentRent::find()->all();
         //$q=Yii::$app->language;
-
-
         return $this->render('view', [
             'item' => $item,
         ]);
@@ -27,13 +27,46 @@ class ConstructionController extends Controller
 
     public function actionEquipment($id)
     {
+        $modelRent = new AddRent(Yii::$app->user->identity);
+
+        $modelRent->scenario = AddRent::SCENARIO_CREATE;
+
+        if ($modelRent->load(Yii::$app->request->post())) {
+            $modelRent->setIdEquipment($id);
+
+            if ($modelRent->save()) {
+
+                Yii::$app->session->setFlash('success', 'Norm');
+
+                return $this->redirect(Yii::$app->request->referrer);
+
+            } else {
+                Yii::$app->session->setFlash('error', 'Fail');
+            }
+        }
+
         $item = EquipmentRent::findOne($id);
+        $date=RentDate::find()->addSelect(['date'])->where('id_tech=:id', [':id' => $id])->asArray()->all();
+        $date=ArrayHelper::getColumn($date,'date');
+        $count=count($date);
+
+
+
+        Yii::$app->view->registerJs("var start11 = " . Json::encode($date)
+            . "; var end22= " . Json::encode($count) . ";",  \yii\web\View::POS_HEAD);
+
+
+        //echo '<pre>';
+        //print_r($script);
+        //echo '<pre>';
+        //die;
 
         switch ($item->category) {
             case 1:
                 return $this->render('aerial_platform', [
                     'equipment' => $this->findPost($id),
                     'characteristics' => $this->findCharacteristics($id),
+                    'modelRent' => $modelRent,
                 ]);
                 break;
             case 2:
@@ -117,21 +150,22 @@ class ConstructionController extends Controller
         }
 
 
-
     }
 
-    private function findPost($id){
-        if ($item = EquipmentRent::findOne($id)){
+    private function findPost($id)
+    {
+        if ($item = EquipmentRent::findOne($id)) {
             return $item;
         }
         throw new NotFoundHttpException();
     }
 
-    private function findCharacteristics($id){
-        $aaa=CharacteristicsTech::find()->addSelect(['feature_id','feature'])->where('equipment_id=:id',[':id'=>$id])->all();
-        $result =ArrayHelper::map($aaa, 'feature_id', 'feature');
-        $result=(object)$result;
-        if ($result){
+    private function findCharacteristics($id)
+    {
+        $aaa = CharacteristicsTech::find()->addSelect(['feature_id', 'feature'])->where('equipment_id=:id', [':id' => $id])->all();
+        $result = ArrayHelper::map($aaa, 'feature_id', 'feature');
+        $result = (object)$result;
+        if ($result) {
             return $result;
         }
         throw new NotFoundHttpException();

@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "2amigos/yii2-file-upload-widget": "~1.0",
         "yiisoft/yii2-faker": "^2.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "bower-asset/air-datepicker": "^2.2"
 
     },
     "require-dev": {

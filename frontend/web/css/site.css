@@ -118,3 +118,33 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+/*calendar/////////////////////////////////////////*/
+.dp-note, .navv {
+    position: absolute
+}
+
+@media all and (max-width: 650px) {
+    .navv-wrap {
+        display: none
+    }
+}
+
+.dp-note {
+    background: #cc000d;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 1px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+.-selected- .dp-note {
+    bottom: 2px;
+    background: #ff0003;
+    opacity: .5
+}
+/*/////////////////////////////////////////////////*/

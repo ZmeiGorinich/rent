@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3692a83f4b5dc44aa8df8c3c7c7d0177",
+    "content-hash": "068682d998c6f503a32d4b17532dd6e5",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -124,6 +124,28 @@
                 "yii2"
             ],
             "time": "2017-09-09T16:01:44+00:00"
+        },
+        {
+            "name": "bower-asset/air-datepicker",
+            "version": "v2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t1m0n/air-datepicker.git",
+                "reference": "004188d9480e3711c08491d6bb988814314a2b13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t1m0n/air-datepicker/zipball/004188d9480e3711c08491d6bb988814314a2b13",
+                "reference": "004188d9480e3711c08491d6bb988814314a2b13",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=2.0.0,<4.0.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -3419,7 +3441,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
