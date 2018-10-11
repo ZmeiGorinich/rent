@@ -19,7 +19,7 @@ return [
     'crane_lifting_capacity'=>'Грузоподъемность крана',
     'dimensions_platform'=>'Габариты платформы',
 
-    'model_excavators'=>'Модель крана манпулятора',
+    'model_excavators'=>'Модель экскаватора',
     'bucket_capacity'=>'Емкость ковша',
     'radius_digging'=>'Радиус копания',
     'kinematic_depth_digging'=>'Кинематическая глубина копания',
