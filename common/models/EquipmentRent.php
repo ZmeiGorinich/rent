@@ -25,7 +25,6 @@ use Yii;
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
- * @property int $id_characteristics
  *
  * @property CharacteristicsTech[] $characteristicsTeches
  * @property User $author
@@ -49,7 +48,7 @@ class EquipmentRent extends \yii\db\ActiveRecord
 //    public function rules()
 //    {
 //        return [
-//            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at', 'id_characteristics'], 'integer'],
+//            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at',], 'integer'],
 //            [['description'], 'string'],
 //            [['created_at', 'updated_at'], 'required'],
 //            [['name', 'type', 'filename', 'min_order'], 'string', 'max' => 255],
@@ -83,7 +82,6 @@ class EquipmentRent extends \yii\db\ActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'id_characteristics' => 'Id Characteristics',
         ];
     }
 

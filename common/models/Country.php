@@ -31,7 +31,7 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            //[['status', 'created_at', 'updated_at'], 'integer'],
             [['created_at', 'updated_at'], 'required'],
             [['name'], 'string', 'max' => 255],
         ];

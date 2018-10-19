@@ -11,7 +11,14 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'area' => [
+            'class' => 'backend\modules\area\Module',
+        ],
+        'rent' => [
+            'class' => 'backend\modules\rent\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -42,6 +49,9 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'storage' => [
+            'class' => 'frontend\components\Storage',
         ],
 
     ],

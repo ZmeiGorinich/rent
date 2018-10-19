@@ -12,7 +12,7 @@ use frontend\models\User;
 class CreateEquipmentForm extends Model
 {
     const SCENARIO_CREATE = 'create';
-    const MAX_DESCRIPTION_LENGTH = 1000;
+    const MAX_DESCRIPTION_LENGTH = 3000;
     const MIN_DESCRIPTION_LENGTH = 10;
 
     private $user;

@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "district".
  *
  * @property int $id
+ * @property int $country_id
  * @property int $region_id
  * @property string $name
  * @property int $status
@@ -33,7 +34,7 @@ class District extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['region_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['country_id', 'region_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['created_at', 'updated_at'], 'required'],
             [['name'], 'string', 'max' => 255],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::className(), 'targetAttribute' => ['region_id' => 'id']],
@@ -47,6 +48,7 @@ class District extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'country_id' => 'Country ID',
             'region_id' => 'Region ID',
             'name' => 'Name',
             'status' => 'Status',
@@ -63,6 +65,11 @@ class District extends \yii\db\ActiveRecord
         return $this->hasOne(Region::className(), ['id' => 'region_id']);
     }
 
+    public function getCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'country_id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -70,4 +77,6 @@ class District extends \yii\db\ActiveRecord
     {
         return $this->hasMany(EquipmentRent::className(), ['district_id' => 'id']);
     }
+
+
 }

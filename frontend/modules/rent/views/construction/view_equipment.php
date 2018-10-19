@@ -26,8 +26,10 @@ use yii\helpers\Html;
 
 
 </div>
-
+<?php if (Yii::$app->user->isGuest):?>
+<?php echo "Для того чтобы арендовать технику авторизируйтесь"?>
+<?php else:?>
 <?= $this->render('@app/modules/rent/views/construction/_form_rent', [
     'modelRent' => $modelRent,
 ]) ?>
-
+<?php endif;?>
