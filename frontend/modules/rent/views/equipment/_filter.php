@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 $request = Yii::$app->request;
 $id = $request->get('SearchEquipment');
-$typeID = $id['type'];
+$typeID = $id['type_id'];
 $categoryID = $id['category'];
 $countryID = $id['country_id'];
 $regionID = $id['region_id'];
@@ -39,7 +39,7 @@ JS;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'type')->dropDownList($arrayType, [
+    <?= $form->field($model, 'type_id')->dropDownList($arrayType, [
         'prompt' => 'выбрать...', 'onChange' => '$.post("/rent/ajax/get-category?id=' . '"+$(this).val(), function(data){
             $("select#searchequipment-category").html(data);
         })']) ?>

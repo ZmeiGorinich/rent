@@ -92,9 +92,6 @@ class DistrictController extends Controller
             }
         }
 
-
-
-
         $modelCountry = Country::find()->orderBy('name ASC')->all();
 
         foreach ($modelCountry as $value){

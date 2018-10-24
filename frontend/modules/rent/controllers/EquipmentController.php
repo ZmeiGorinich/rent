@@ -16,7 +16,7 @@ use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 
 
-class ConstructionController extends Controller
+class EquipmentController extends Controller
 {
     public function actionView()
     {
@@ -49,7 +49,6 @@ class ConstructionController extends Controller
 
     public function actionEquipment($id)
     {
-
         $item = EquipmentRent::findOne($id);
         $date = RentDate::find()->addSelect(['date'])->where('id_tech=:id', [':id' => $id])->asArray()->all();
         $date = ArrayHelper::getColumn($date, 'date');

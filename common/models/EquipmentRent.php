@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property int $author_id
  * @property string $name
- * @property string $type
  * @property int $category
  * @property string $filename
  * @property int $views
@@ -51,7 +50,7 @@ class EquipmentRent extends \yii\db\ActiveRecord
 //            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at',], 'integer'],
 //            [['description'], 'string'],
 //            [['created_at', 'updated_at'], 'required'],
-//            [['name', 'type', 'filename', 'min_order'], 'string', 'max' => 255],
+//            [['name', 'filename', 'min_order'], 'string', 'max' => 255],
 //            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
 //            [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::className(), 'targetAttribute' => ['district_id' => 'id']],
 //            [['category'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryEquipment::className(), 'targetAttribute' => ['category' => 'id']],
@@ -67,7 +66,6 @@ class EquipmentRent extends \yii\db\ActiveRecord
             'id' => 'ID',
             'author_id' => 'Author ID',
             'name' => 'Name',
-            'type' => 'Type',
             'category' => 'Category',
             'filename' => 'Filename',
             'views' => 'Views',
@@ -112,7 +110,7 @@ class EquipmentRent extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategory0()
+    public function getCategory()
     {
         return $this->hasOne(CategoryEquipment::className(), ['id' => 'category']);
     }

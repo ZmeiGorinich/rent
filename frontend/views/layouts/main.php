@@ -42,32 +42,27 @@ AirDatepicker::register($this);
 
     $menuItems = [
         ['label' => Yii::t('menu', 'Home'), 'url' => ['/site/index']],
-        ['label' => Yii::t('menu', 'Rent'), 'items' => [
-            ['label' => Yii::t('menu', 'Construction'), 'url' => ['/rent/construction/view']],
-            ['label' => Yii::t('menu', 'Municipal'), 'url' => ['/rent/municipal/index']],
-
-        ]],
-
-        //['label' => 'Язык', 'items' => [
-        //    ['label' => 'Русский', 'url' => ['/site/language/ru']],
-        //    ['label' => 'English', 'url' => ['/site/language/en']],
-        //]],
-
-        ['label' => Yii::t('menu', 'Service'), 'url' => ['/service/default/index']],
-        ['label' => Yii::t('menu', 'Shop'), 'url' => ['/shop/default/index']],
+        ['label' => Yii::t('menu', 'Rent'), 'url' => ['/rent/equipment/view']],
+        //['label' => Yii::t('menu', 'Service'), 'url' => ['/service/default/index']],
+        //['label' => Yii::t('menu', 'Shop'), 'url' => ['/shop/default/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/user/default/signup']];
         $menuItems[] = ['label' => 'Войти', 'url' => ['/user/default/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/user/default/logout'], 'post')
-            . Html::submitButton(
-                'Выход (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = ['label' => 'Кабинет', 'items' => [
+            ['label' => 'Профиль', 'url' => ['/user/profile/index']],
+            //['label' => 'Ваша техника', 'url' => ['/user/profile/my-equipment']],
+            //['label' => 'Сдать в Аренду', 'url' => ['/rent/create/create']],
+            ['label' => 'Заявки на аренду', 'url' => ['/user/profile/orders']],
+            ['label' => 'Выход', 'url' => ['user/default/logout'],
+                'linkOptions' => ['data-method' => 'post']],
+            //['label' => 'Продать', 'url' => ['/user/default/logout']],
+            //['label' =>'Заказы', 'url' => ['/rent/construction/view']],
+            //['label' => 'Предложения на продажу', 'url' => ['/user/default/logout']],
+            //['label' => 'Заявки на продажу', 'url' => ['/user/default/logout']],
+        ]];
+
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

@@ -13,8 +13,7 @@ use yii\widgets\ActiveForm;
                 <?php $form = ActiveForm::begin();?>
                 <div class="col-lg-6">
                     <?php echo $form->field($modelRent, 'date')->label('Заголовок')->textInput(
-                        ['type'=>'text','class'=>'datepicker-here','data-multiple-dates'=>"5",
-                            'data-multiple-dates-separator'=>",",'style'=>"display: none;",
+                        ['type'=>'text','class'=>'datepicker-here','style'=>"display: none;",
                             'data-position'=>'right top' ,'id'=>"custom-cells"]); ?>
                 </div>
                 <div class="col-lg-6">

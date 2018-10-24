@@ -12,7 +12,7 @@ use common\models\EquipmentRent;
  */
 class SearchEquipment extends EquipmentRent
 {
-    public $country_id,$region_id;
+    public $country_id,$region_id,$type_id;
 
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class SearchEquipment extends EquipmentRent
     {
         return [
             [['id', 'author_id',  'views', 'price',  'height', 'length', 'width', 'weight',  'created_at', 'updated_at',], 'integer'],
-            [['name', 'type', 'filename', 'min_order', 'description', 'region_id', 'country_id','district_id','category','status',], 'safe'],
+            [['name', 'filename', 'min_order', 'description', 'region_id', 'country_id','district_id','category','status','type_id',], 'safe'],
         ];
     }
 
@@ -43,7 +43,7 @@ class SearchEquipment extends EquipmentRent
      */
     public function search($params)
     {
-        $query = EquipmentRent::find()->joinWith('district');
+        $query = EquipmentRent::find()->joinWith('district')->joinWith('category');
 
         // add conditions that should always apply here
 
@@ -69,12 +69,12 @@ class SearchEquipment extends EquipmentRent
         ]);
 
         $query
-            ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'category', $this->category])
-            ->andFilterWhere(['like', 'equipment_rent.status', '20'])
+            //->andFilterWhere(['like', 'equipment_rent.status', '20'])
             ->andFilterWhere(['like', 'district_id', $this->district_id])
             ->andFilterWhere(['like', 'district.country_id', $this->country_id])
-            ->andFilterWhere(['like', 'district.region_id', $this->region_id]);
+            ->andFilterWhere(['like', 'district.region_id', $this->region_id])
+            ->andFilterWhere(['like', 'category_equipment.type_id', $this->type_id]);
         return $dataProvider;
     }
 }

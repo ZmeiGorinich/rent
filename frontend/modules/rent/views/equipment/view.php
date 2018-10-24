@@ -12,13 +12,13 @@ use yii\helpers\Url;
             <div class="row">
                 <?php foreach ($models as $model): ?>
                         <div class="row">
-                            <a href="<?php echo Url::to(['/rent/construction/equipment', 'id' => $model->id]); ?>">
+                            <a href="<?php echo Url::to(['/rent/equipment/equipment?id=', 'id' => $model->id]); ?>">
                                 <p><?= Html::encode($model->name); ?></p>
                             </a>
                         </div>
 
                         <div class="row">
-                            <a href="<?php echo Url::to(['/rent/construction/equipment', 'id' => $model->id]); ?>">
+                            <a href="<?php echo Url::to(['/rent/equipment/equipment', 'id' => $model->id]); ?>">
                                 <img src="<?php echo Yii::$app->storage->getFile($model->filename); ?> "
                                      class="img-thumbnail" alt="Cinque Terre">
                             </a>

@@ -20,7 +20,7 @@ use yii\helpers\Html;
         </div>
     </div>
 
-    <?= $this->render('@app/modules/rent/views/construction/_characteristics', [
+    <?= $this->render('@app/modules/rent/views/equipment/_characteristics', [
         'characteristics' => $characteristics,
     ]) ?>
 
@@ -29,7 +29,7 @@ use yii\helpers\Html;
 <?php if (Yii::$app->user->isGuest):?>
 <?php echo "Для того чтобы арендовать технику авторизируйтесь"?>
 <?php else:?>
-<?= $this->render('@app/modules/rent/views/construction/_form_rent', [
+<?= $this->render('@app/modules/rent/views/equipment/_form_rent', [
     'modelRent' => $modelRent,
 ]) ?>
 <?php endif;?>
