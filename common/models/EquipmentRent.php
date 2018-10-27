@@ -94,7 +94,7 @@ class EquipmentRent extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAuthor() 
+    public function getAuthor()
     {
         return $this->hasOne(User::className(), ['id' => 'author_id']);
     }

@@ -13,12 +13,13 @@ use Yii;
  * @property int $total
  * @property string $location
  * @property string $description
+ * @property string $date_start
+ * @property string $date_finish
  * @property int $created_at
  * @property int $updated_at
  *
  * @property EquipmentRent $tech
  * @property User $user
- * @property RentDate[] $rentDates
  */
 class Rent extends \yii\db\ActiveRecord
 {
@@ -33,17 +34,18 @@ class Rent extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
-        return [
-            [['id_tech', 'id_user', 'total', 'created_at', 'updated_at'], 'integer'],
-            [['description'], 'string'],
-            [['created_at', 'updated_at'], 'required'],
-            [['location'], 'string', 'max' => 255],
-            [['id_tech'], 'exist', 'skipOnError' => true, 'targetClass' => EquipmentRent::className(), 'targetAttribute' => ['id_tech' => 'id']],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
-        ];
-    }
+//    public function rules()
+//    {
+//        return [
+//            [['id_tech', 'id_user', 'location', 'created_at', 'updated_at'], 'required'],
+//            [['id_tech', 'id_user', 'total', 'created_at', 'updated_at'], 'integer'],
+//            [['description'], 'string'],
+//            [['date_start', 'date_finish'], 'safe'],
+//            [['location'], 'string', 'max' => 255],
+//            [['id_tech'], 'exist', 'skipOnError' => true, 'targetClass' => EquipmentRent::className(), 'targetAttribute' => ['id_tech' => 'id']],
+//            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
+//        ];
+//    }
 
     /**
      * {@inheritdoc}
@@ -57,6 +59,8 @@ class Rent extends \yii\db\ActiveRecord
             'total' => 'Total',
             'location' => 'Location',
             'description' => 'Description',
+            'date_start' => 'Date Start',
+            'date_finish' => 'Date Finish',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -76,13 +80,5 @@ class Rent extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRentDates()
-    {
-        return $this->hasMany(RentDate::className(), ['id_order' => 'id_order']);
     }
 }

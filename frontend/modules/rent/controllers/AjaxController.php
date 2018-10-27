@@ -11,7 +11,9 @@ namespace frontend\modules\rent\controllers;
 use common\models\CategoryEquipment;
 use common\models\District;
 use common\models\Region;
+use frontend\modules\rent\models\forms\AddRent;
 use yii\web\Controller;
+use Yii;
 
 
 class AjaxController extends Controller
@@ -153,6 +155,23 @@ class AjaxController extends Controller
             }
         } else {
             echo "<option value> - </option>";
+        }
+    }
+
+    public function actionAddRent()
+    {
+        $form_model = new AddRent(Yii::$app->user->identity);
+
+
+        if(Yii::$app->request->isAjax){
+            if(Yii::$app->request->post()){
+                echo 'Form 1';
+            }elseif(Yii::$app->request->post()){
+                echo 'Form 2';
+            }
+        }
+        if($form_model->load(Yii::$app->request->post())){
+            var_dump($form_model);
         }
     }
 }

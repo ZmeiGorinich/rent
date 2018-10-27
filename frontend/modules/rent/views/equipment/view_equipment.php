@@ -19,17 +19,19 @@ use yii\helpers\Html;
 
         </div>
     </div>
-
-    <?= $this->render('@app/modules/rent/views/equipment/_characteristics', [
-        'characteristics' => $characteristics,
-    ]) ?>
+    <?php if (Yii::$app->user->isGuest):?>
+        <?php echo "Для того чтобы арендовать технику авторизируйтесь"?>
+    <?php else:?>
+        <?= $this->render('@app/modules/rent/views/equipment/_form_rent', [
+            'modelRent' => $modelRent,
+            'equipment' => $equipment,
+        ]) ?>
+    <?php endif;?>
 
 
 </div>
-<?php if (Yii::$app->user->isGuest):?>
-<?php echo "Для того чтобы арендовать технику авторизируйтесь"?>
-<?php else:?>
-<?= $this->render('@app/modules/rent/views/equipment/_form_rent', [
-    'modelRent' => $modelRent,
+
+
+<?= $this->render('@app/modules/rent/views/equipment/_characteristics', [
+    'characteristics' => $characteristics,
 ]) ?>
-<?php endif;?>

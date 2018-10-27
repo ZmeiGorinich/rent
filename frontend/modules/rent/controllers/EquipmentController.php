@@ -50,13 +50,13 @@ class EquipmentController extends Controller
     public function actionEquipment($id)
     {
         $item = EquipmentRent::findOne($id);
-        $date = RentDate::find()->addSelect(['date'])->where('id_tech=:id', [':id' => $id])->asArray()->all();
-        $date = ArrayHelper::getColumn($date, 'date');
-        $count = count($date);
+        //$date = RentDate::find()->addSelect(['date'])->where('id_tech=:id', [':id' => $id])->asArray()->all();
+        //$date = ArrayHelper::getColumn($date, 'date');
+        //$count = count($date);
 
 
-        Yii::$app->view->registerJs("var start11 = " . Json::encode($date)
-            . "; var end22= " . Json::encode($count) . ";", \yii\web\View::POS_HEAD);
+        //Yii::$app->view->registerJs("var start11 = " . Json::encode($date)
+        //    . "; var end22= " . Json::encode($count) . ";", \yii\web\View::POS_HEAD);
 
         if (Yii::$app->user->isGuest){
             return $this->render('view_equipment', [
