@@ -54,7 +54,7 @@ AirDatepicker::register($this);
             ['label' => 'Профиль', 'url' => ['/user/profile/index']],
             //['label' => 'Ваша техника', 'url' => ['/user/profile/my-equipment']],
             //['label' => 'Сдать в Аренду', 'url' => ['/rent/create/create']],
-            ['label' => 'Заявки на аренду', 'url' => ['/user/profile/orders']],
+            ['label' => 'Заявки на аренду', 'url' => ['/user/order/current']],
             ['label' => 'Выход', 'url' => ['user/default/logout'],
                 'linkOptions' => ['data-method' => 'post']],
             //['label' => 'Продать', 'url' => ['/user/default/logout']],

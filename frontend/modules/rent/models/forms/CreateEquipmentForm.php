@@ -3,7 +3,6 @@
 namespace frontend\modules\rent\models\forms;
 
 
-use common\models\CharacteristicsTech;
 use yii\base\Model;
 use Yii;
 use common\models\EquipmentRent;
@@ -19,13 +18,12 @@ class CreateEquipmentForm extends Model
 
     public $picture;
     public $name;
-    public $type;
     public $category;
     //public $category2;
     //public $category3;
 
     public $price;
-    public $min_order;
+    public $mini_description;
     public $description;
     public $region;
     public $district;
@@ -53,7 +51,7 @@ class CreateEquipmentForm extends Model
     {
         return [
             self::SCENARIO_CREATE => ['picture', 'name', 'category', 'description',
-                'type', 'price', 'min_order', 'region', 'district', 'height', 'length', 'width', 'weight',
+                'type', 'price', 'district', 'height', 'length', 'width', 'weight','mini_description',
                 'model_aerial_platform', 'lifting_height', 'lifting_capacity_cradle', 'number_cradle',
                 'model_truck_cranes', 'lifting_capacity', 'length_boom', 'boom_extension_length', 'maximum_reach_boom',
                 'model_cranes_manipulators', 'car_load_capacity', 'boom_outreach', 'crane_lifting_capacity', 'dimensions_platform',
@@ -86,12 +84,13 @@ class CreateEquipmentForm extends Model
 
             [['picture'], 'file',
 
-                'skipOnEmpty' => true,
+                'skipOnEmpty' => false,
                 'extensions' => ['jpg', 'png'],
                 'checkExtensionByMimeType' => true,
                 'maxSize' => $this->getMaxFileSize()],
 
-            [['name', 'type', 'price', 'min_order', 'region', 'district', 'height', 'length', 'width', 'weight'], 'required'],
+            [['name',  'price', 'district', 'height', 'length', 'width', 'weight'], 'required'],
+            [['mini_description'],'string'],
 
             [['category'], 'number', 'min' => '1', 'message' => 'Выберите категорию'],
 
@@ -370,41 +369,24 @@ class CreateEquipmentForm extends Model
 
             $equipmentRent->name = $this->name;
             $equipmentRent->author_id = $this->user->getId();
-            $equipmentRent->type = $this->type;
             $equipmentRent->category = $this->category;
             $equipmentRent->filename = Yii::$app->storage->saveUploadedFile($this->picture);
             $equipmentRent->price = $this->price;
-            $equipmentRent->min_order = $this->min_order;
             $equipmentRent->description = $this->description;
-
             $equipmentRent->district_id = $this->district;
-
             $equipmentRent->height = $this->height;
             $equipmentRent->width = $this->width;
             $equipmentRent->length = $this->length;
             $equipmentRent->weight = $this->weight;
+            $equipmentRent->mini_description = $model2;
 
             $equipmentRent->created_at = time();
             $equipmentRent->updated_at = time();
 
             $equipmentRent->save(false);
-
+            return true;
         }
 
-        $insert_id = Yii::$app->db->getLastInsertID();
-
-        foreach ($model2 as $key => $item) {
-            $characteristics = new CharacteristicsTech();
-
-            $characteristics->equipment_id = $insert_id;
-
-            $characteristics->feature = $item;
-
-            $characteristics->feature_id = $key;
-
-            $characteristics->save();
-        }
-        return $characteristics->save(false);
 
     }
 

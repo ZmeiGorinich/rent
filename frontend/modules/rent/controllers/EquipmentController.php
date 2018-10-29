@@ -75,7 +75,7 @@ class EquipmentController extends Controller
 
                     Yii::$app->session->setFlash('success', 'Norm');
 
-                    return $this->redirect(Yii::$app->request->referrer);
+                    return $this->refresh();
 
                 } else {
                     Yii::$app->session->setFlash('error', 'Fail');
@@ -99,11 +99,9 @@ class EquipmentController extends Controller
 
     private function findCharacteristics($id)
     {
-        $aaa = CharacteristicsTech::find()->addSelect(['feature_id', 'feature'])->where('equipment_id=:id', [':id' => $id])->all();
-        $result = ArrayHelper::map($aaa, 'feature_id', 'feature');
-        $result = (object)$result;
-        if ($result) {
-            return $result;
+        if ($item = EquipmentRent::findOne($id)) {
+            $array=unserialize($item->mini_description);
+            return $array;
         }
         throw new NotFoundHttpException();
     }

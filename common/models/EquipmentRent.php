@@ -14,8 +14,8 @@ use Yii;
  * @property string $filename
  * @property int $views
  * @property int $price
- * @property string $min_order
  * @property string $description
+ * @property string $mini_description
  * @property int $district_id
  * @property int $height
  * @property int $length
@@ -25,7 +25,6 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  *
- * @property CharacteristicsTech[] $characteristicsTeches
  * @property User $author
  * @property District $district
  * @property CategoryEquipment $category0
@@ -41,21 +40,21 @@ class EquipmentRent extends \yii\db\ActiveRecord
         return 'equipment_rent';
     }
 
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function rules()
-//    {
-//        return [
-//            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at',], 'integer'],
-//            [['description'], 'string'],
-//            [['created_at', 'updated_at'], 'required'],
-//            [['name', 'filename', 'min_order'], 'string', 'max' => 255],
-//            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
-//            [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::className(), 'targetAttribute' => ['district_id' => 'id']],
-//            [['category'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryEquipment::className(), 'targetAttribute' => ['category' => 'id']],
-//        ];
-//    }
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['author_id', 'name', 'category', 'filename', 'price', 'description', 'mini_description', 'district_id', 'height', 'length', 'width', 'weight', 'created_at', 'updated_at'], 'required'],
+            [['author_id', 'category', 'views', 'price', 'district_id', 'height', 'length', 'width', 'weight', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['description', 'mini_description'], 'string'],
+            [['name', 'filename'], 'string', 'max' => 255],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
+            [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::className(), 'targetAttribute' => ['district_id' => 'id']],
+            [['category'], 'exist', 'skipOnError' => true, 'targetClass' => CategoryEquipment::className(), 'targetAttribute' => ['category' => 'id']],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -70,8 +69,8 @@ class EquipmentRent extends \yii\db\ActiveRecord
             'filename' => 'Filename',
             'views' => 'Views',
             'price' => 'Price',
-            'min_order' => 'Min Order',
             'description' => 'Description',
+            'mini_description' => 'Mini Description',
             'district_id' => 'District ID',
             'height' => 'Height',
             'length' => 'Length',
@@ -81,14 +80,6 @@ class EquipmentRent extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCharacteristicsTeches()
-    {
-        return $this->hasMany(CharacteristicsTech::className(), ['equipment_id' => 'id']);
     }
 
     /**

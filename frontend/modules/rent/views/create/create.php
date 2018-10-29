@@ -23,9 +23,9 @@ $this->registerJs($script, yii\web\View::POS_READY);
 
     <?php echo $form->field($model, 'price')->label('Цена'); ?>
 
-    <?php echo $form->field($model, 'min_order')->label('Мин. срок аренды (Часы)'); ?>
+    <?php// echo $form->field($model, 'min_order')->label('Мин. срок аренды (Часы)'); ?>
 
-    <?php echo $form->field($model, 'region')->label('Область'); ?>
+    <?php// echo $form->field($model, 'region')->label('Область'); ?>
 
     <?php echo $form->field($model, 'district')->label('Район'); ?>
 
@@ -39,14 +39,14 @@ $this->registerJs($script, yii\web\View::POS_READY);
 
     <?php echo $form->field($model, 'description')->label('Описание')->textarea(); ?>
 
-    <div id="type" style="display: none;">
-        <?php echo $form->field($model, 'type')->label('Тип техники')->dropDownList([
-            'construction' => 'Строительная',
-            //'construction' => 'Строительная',
-            //'municipal' => 'Комунальная',
-            //'agricultural' => 'Сельскохозяйственная',
-        ], ['onChange' => "doSelect(this,{'construction':'construction','agricultural':'agricultural',});"]); ?>
-    </div>
+<!--    <div id="type" style="display: none;">-->
+<!--        --><?php //echo $form->field($model, 'type')->label('Тип техники')->dropDownList([
+//            'construction' => 'Строительная',
+//            //'construction' => 'Строительная',
+//            //'municipal' => 'Комунальная',
+//            //'agricultural' => 'Сельскохозяйственная',
+//        ], ['onChange' => "doSelect(this,{'construction':'construction','agricultural':'agricultural',});"]); ?>
+<!--    </div>-->
 
     <div id="construction">
         <?php echo $form->field($model, 'category')->label('Категория')->dropDownList([

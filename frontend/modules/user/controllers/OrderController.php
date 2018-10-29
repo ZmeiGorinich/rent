@@ -22,7 +22,7 @@ class OrderController extends Controller
             $userId = Yii::$app->user->getId();
 
             $rents = Yii::$app->db->createCommand("SELECT equipment_rent.name ,rent.created_at, rent.location,  
-rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish 
+rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish , rent.status_pay , rent.status 
 FROM `rent` left JOIN `equipment_rent` ON `rent`.`id_tech` = `equipment_rent`.`id` where  id_user =	$userId and rent.status=10;")->queryAll();
 
             return $this->render('current', [
@@ -40,7 +40,7 @@ FROM `rent` left JOIN `equipment_rent` ON `rent`.`id_tech` = `equipment_rent`.`i
             $userId = Yii::$app->user->getId();
 
             $rents = Yii::$app->db->createCommand("SELECT equipment_rent.name ,rent.created_at, rent.location,  
-rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish 
+rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish , rent.status_pay , rent.status 
 FROM `rent` left JOIN `equipment_rent` ON `rent`.`id_tech` = `equipment_rent`.`id` where  id_user =	$userId and rent.status=5;")->queryAll();
 
             return $this->render('pre_order', [
@@ -58,7 +58,7 @@ FROM `rent` left JOIN `equipment_rent` ON `rent`.`id_tech` = `equipment_rent`.`i
             $userId = Yii::$app->user->getId();
 
             $rents = Yii::$app->db->createCommand("SELECT equipment_rent.name ,rent.created_at, rent.location,  
-rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish 
+rent.description, rent.id_tech, rent.total,rent.date_start,rent.date_finish , rent.status_pay , rent.description, rent.status 
 FROM `rent` left JOIN `equipment_rent` ON `rent`.`id_tech` = `equipment_rent`.`id` where  id_user =	$userId and rent.status=15;")->queryAll();
 
             return $this->render('history', [

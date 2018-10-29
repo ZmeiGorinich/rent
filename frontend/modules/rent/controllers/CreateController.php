@@ -106,7 +106,8 @@ class CreateController extends Controller
             'lifting_capacity_cradle' => $model->lifting_capacity_cradle,
             'number_cradle' => $model->number_cradle,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -118,7 +119,8 @@ class CreateController extends Controller
             'boom_extension_length' => $model->boom_extension_length,
             'maximum_reach_boom' => $model->maximum_reach_boom,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -130,7 +132,8 @@ class CreateController extends Controller
             'crane_lifting_capacity' => $model->crane_lifting_capacity,
             'dimensions_platform' => $model->dimensions_platform,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -142,7 +145,8 @@ class CreateController extends Controller
             'kinematic_depth_digging' => $model->kinematic_depth_digging,
             'discharge_height' => $model->discharge_height,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -154,7 +158,8 @@ class CreateController extends Controller
             'bucket_capacity_loader' => $model->bucket_capacity_loader,
             'unloading_height_loader' => $model->unloading_height_loader,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -166,7 +171,8 @@ class CreateController extends Controller
             'blade_height' => $model->blade_height,
             'max_pulling_force' => $model->max_pulling_force,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;;
 
     }
 
@@ -178,7 +184,8 @@ class CreateController extends Controller
             'mass_hydraulic_breaker' => $model->mass_hydraulic_breaker,
             'hammer_beat_frequency' => $model->hammer_beat_frequency,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -193,7 +200,8 @@ class CreateController extends Controller
             'width_car_expanded_form' => $model->width_car_expanded_form,
             'height_working_condition' => $model->height_working_condition,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -206,7 +214,8 @@ class CreateController extends Controller
             'operating_weight' => $model->operating_weight,
             'maximum_discharge_height' => $model->maximum_discharge_height,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -215,7 +224,8 @@ class CreateController extends Controller
             'model_truck_mixers' => $model->model_truck_mixers,
             'volume_concrete_mixer' => $model->volume_concrete_mixer,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -224,7 +234,8 @@ class CreateController extends Controller
             'model_compressors' => $model->model_compressors,
             'power_compressors' => $model->power_compressors,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -233,7 +244,8 @@ class CreateController extends Controller
             'model_generators' => $model->model_generators,
             'power_generators' => $model->power_generators,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -244,7 +256,8 @@ class CreateController extends Controller
             'board_height' => $model->board_height,
             'bead_length' => $model->bead_length,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
     }
 
@@ -253,7 +266,8 @@ class CreateController extends Controller
             'model_road_rollers' => $model->model_road_rollers,
             'working_width' => $model->working_width,
         ];
-        return $array;
+        $serialize=serialize($array);
+        return $serialize;
 
 
     }
